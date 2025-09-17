@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>심관섭 - 신사업 전략 전문가</title>
+    <style>
+        /* * =================================
+         * 기본 & 레이아웃 스타일
+         * =================================
+        */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            color: #4a5568;
+        }
+        
+        .resume-container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            animation: slideIn 0.6s ease-out;
+            border: 1px solid #e2e8f0;
+        }
+
+        .page {
+            padding: 50px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 5px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        /* * =================================
+         * 헤더 & 프로필
+         * =================================
+        */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 40px;
+        }
+        
+        .profile-pic-container {
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+        }
+        
+        .header-info h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #2d3748;
+            margin-bottom: 4px;
+            letter-spacing: -1px;
+        }
+        
+        .header-info .title {
+            font-size: 20px;
+            font-weight: 500;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+        
+        .header-info .contact {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #718096;
+            font-size: 14px;
+        }
+        
+        .intro-text {
+            line-height: 1.8;
+            font-size: 16px;
+            padding: 24px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        /* * =================================
+         * 주요 프로젝트
+         * =================================
+        */
+        .project-card {
+            background: #fdfdff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 10px 30px -10px rgba(102, 126, 234, 0.2);
+            transform: translateY(-5px);
+            border-color: #c3dafe;
+        }
+        
+        .project-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        
+        .project-company {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #eef2ff;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #4338ca;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        
+        .project-content strong {
+            color: #4a5568;
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .project-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .project-content li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .project-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .achievements {
+            margin-top: 20px;
+        }
+        
+        .achievement-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #dcfce7;
+            color: #166534;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-top: 8px;
+        }
+
+        /* * =================================
+         * 경력 및 기타 섹션
+         * =================================
+        */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 24px;
+        }
+        
+        .timeline-company {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 16px;
+        }
+        
+        .timeline-position, .timeline-date {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        
+        .skill-category-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            padding: 4px 12px;
+            background: #f1f5f9;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        /* * =================================
+         * 애니메이션 & 반응형 & 인쇄
+         * =================================
+        */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 20px 10px; }
+            .page { padding: 30px 20px; }
+            
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-info h1 { font-size: 32px; }
+            .header-info .title { font-size: 18px; }
+            .contact { justify-content: center; }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .resume-container {
+                box-shadow: none;
+                border: none;
+            }
+            .page {
+                padding: 20mm;
+            }
+            .header-info .title, .project-company, .achievement-badge {
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            .section-title::before, .profile-pic-container {
+                 display: none;
+            }
+            .project-card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+             .print-button {
+                display: none;
+            }
+        }
+
+        .print-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 30px -10px rgba(102, 126, 234, 0.5);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px -10px rgba(102, 126, 234, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="page">
+            <!-- 헤더 -->
+            <div class="header">
+                <div class="profile-pic-container">
+                    <!-- 
+                        [수정 완료] 전달해주신 증명사진 링크로 교체했습니다.
+                        GitHub의 raw content 주소를 사용하여 이미지가 정상적으로 로드됩니다.
+                    -->
+                    <img src="https://raw.githubusercontent.com/kwansubshim-cloud/resume/refs/heads/main/IMG_5701.jpeg" alt="심관섭 프로필 사진" class="profile-pic">
+                </div>
+                <div class="header-info">
+                    <h1>심관섭</h1>
+                    <div class="title">신사업 전략 · 블록체인 · 핀테크 전문가</div>
+                    <div class="contact">
+                        <span class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                            Seoul, Korea
+                        </span>
+                        <span class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8.841 1.626a.5.5 0 0 0-.682 0l-7.5 6A.5.5 0 0 0 .5 8v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5V11h4v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5V8a.5.5 0 0 0-.159-.374l-7.5-6zM8 11.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/><path d="M12.5 3.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0 0 1h1a.5.5 0 0 0 .5-.5z"/></svg>
+                            9년 경력
+                        </span>
+                        <span class="contact-item">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0l7.5-3a.5.5 0 0 0 .025-.917l-7.5-3.5zM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46z"/><path d="M3.734 6.42 C3.734 6.42 3.734 6.42 3.734 6.42 L3.734 6.42 L3.734 6.42 L1.453 7.482 C1.453 7.482 1.453 7.482 1.453 7.482 C1.453 7.482 1.453 7.482 1.453 7.482 C1.453 7.482 1.453 7.482 1.453 7.482 L1.453 7.482 C1.453 7.482 1.453 7.482 1.453 7.482 L1.453 7.482 C1.453 7.482 1.453 7.482 1.453 7.482 L2 7.65 C2 7.65 2 7.65 2 7.65 L2 11.242 C2 11.242 2 11.242 2 11.242 L2 11.242 C2 11.242 2 11.242 2 11.242 L2 11.242 C2 11.242 2 11.242 2 11.242 L2 11.242 C2 11.242 2 11.242 2 11.242 L7.5 14 L14 11.242 L14 7.65 L14.547 7.482 C14.547 7.482 14.547 7.482 14.547 7.482 L14.547 7.482 C14.547 7.482 14.547 7.482 14.547 7.482 L14.547 7.482 C14.547 7.482 14.547 7.482 14.547 7.482 L14.547 7.482 C14.547 7.482 14.547 7.482 14.547 7.482 L12.266 6.42 L8 8.46 L3.734 6.42 Z"/></svg>
+                            연세대학교 정보대학원 석사
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 프로필 -->
+            <div class="section">
+                <h2 class="section-title">Profile</h2>
+                <div class="intro-text">
+                    저는 '전략'을 아이디어로만 남겨두지 않고, '실행'을 통해 '성과'로 증명하는 사람입니다. 한화 금융그룹에서는 안정성을 중시하는 시스템 안에서 '어떻게' 새로운 사업의 씨앗을 심고 리스크를 관리하는지 배웠습니다. 코인원과 빗썸에서는 누구도 가보지 않은 길 위에서 기술과 데이터를 무기로 '어떻게' 시장을 개척하고 사용자를 설득하는 프로덕트를 만드는지 체득했습니다.
+                </div>
+            </div>
+
+            <!-- 주요 프로젝트 -->
+            <div class="section">
+                <h2 class="section-title">Key Projects</h2>
+                
+                <div class="project-card">
+                    <h3 class="project-title">코인원 법인사업 0→1 구축 및 위기 대응</h3>
+                    <div class="project-company">코인원</div>
+                    <div class="project-content">
+                        <strong>도전 과제:</strong>
+                        <p>제로베이스에서 법인사업 조직을 신설하고, 규제 지연이라는 외부 위기 상황을 신규 VIP 서비스 론칭이라는 기회로 전환</p>
+                        
+                        <strong>해결 과정:</strong>
+                        <ul>
+                            <li>금융당국 가이드라인 지연 → 대안 전략으로 VIP 서비스 론칭 역제안</li>
+                            <li>데이터 시뮬레이션으로 매출 10% 기여 가능성 증명, 경영진 투자 유도</li>
+                        </ul>
+                        <div class="achievements">
+                            <span class="achievement-badge">✓ 200명+ VIP 고객 유치</span>
+                            <span class="achievement-badge">✓ 유의미한 매출 증대</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3 class="project-title">빗썸 레거시 입출금 시스템 전면 재구축</h3>
+                    <div class="project-company">빗썸코리아</div>
+                    <div class="project-content">
+                        <strong>도전 과제:</strong>
+                        <p>신규 상장 불가, 일 단위 장애, 보안 취약 등 총체적 난국에 빠진 PHP 기반의 레거시 시스템을 전면 재구축</p>
+                        
+                        <strong>해결 과정:</strong>
+                        <ul>
+                            <li>안정성, 확장성, 보안 3대 핵심 목표 설정 및 신규 아키텍처 설계 주도</li>
+                            <li>Scrum 방식으로 프로젝트를 운영하며 복잡한 이슈를 체계적으로 관리</li>
+                        </ul>
+                        <div class="achievements">
+                            <span class="achievement-badge">✓ KPI 200% 초과 달성</span>
+                            <span class="achievement-badge">✓ 장애율 획기적 감소</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">한화 금융그룹 블록체인 신사업 발굴 및 전략적 투자</h3>
+                    <div class="project-company">한화생명 &amp; 한화투자증권</div>
+                    <div class="project-content">
+                        <strong>도전 과제:</strong>
+                        <p>그룹의 미래 성장 동력 확보를 위해 유망 블록체인 기술 기업을 발굴하고 전략적 투자를 집행</p>
+                        
+                        <strong>해결 과정:</strong>
+                        <ul>
+                            <li>STO, RWA, Web3 결제 등 그룹 시너지가 가능한 핵심 영역 특정 및 유망 스타트업 발굴</li>
+                            <li>사업성 분석, 밸류에이션, 투자 심의 보고 등 투자 프로세스 전반 주도</li>
+                        </ul>
+                        <div class="achievements">
+                            <span class="achievement-badge">✓ 4건 전략적 투자 완료</span>
+                            <span class="achievement-badge">✓ Web3 지갑 MVP 론칭</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="grid-container">
+                 <!-- 경력 -->
+                <div class="section">
+                    <h2 class="section-title">Work Experience</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-company">(주)코인원</div>
+                            <div class="timeline-position">법인사업팀 팀장, PO</div>
+                            <div class="timeline-date">2024.01 ~ 현재</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-company">(주)빗썸코리아</div>
+                            <div class="timeline-position">블록체인개발실, PM</div>
+                            <div class="timeline-date">2022.06 ~ 2024.11</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-company">(주)한화생명</div>
+                            <div class="timeline-position">미래전략실, 신사업 전략</div>
+                            <div class="timeline-date">2020.07 ~ 2022.05</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-company">(주)한화투자증권</div>
+                            <div class="timeline-position">디지털전략실, 디지털 전략</div>
+                            <div class="timeline-date">2017.12 ~ 2020.06</div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- 기술 -->
+                <div class="section">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <div class="skill-category-title">전략 & 비즈니스</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">시장 분석</span>
+                                <span class="skill-tag">사업성 평가</span>
+                                <span class="skill-tag">재무 모델링</span>
+                                <span class="skill-tag">GTM 전략</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">프로젝트 관리</div>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Agile/Scrum</span>
+                                <span class="skill-tag">PMP</span>
+                                <span class="skill-tag">Jira</span>
+                                <span class="skill-tag">Confluence</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-category-title">데이터 & AI</div>
+                             <div class="skill-tags">
+                                <span class="skill-tag">MS-SQL</span>
+                                <span class="skill-tag">Generative AI (LLM)</span>
+                                <span class="skill-tag">리서치 자동화</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="print-button" onclick="window.print()">🖨️ PDF로 저장</button>
+
+</body>
+</html>
