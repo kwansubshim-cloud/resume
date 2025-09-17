@@ -65,7 +65,8 @@
             width: 120px;
             height: 120px;
             border-radius: 20px;
-            object-fit: cover;
+            object-fit: cover; /* 이미지 비율을 유지하면서 꽉 채웁니다 (잘릴 수 있음) */
+            object-position: center top; /* 이미지의 상단 중앙을 기준으로 표시합니다 */
             flex-shrink: 0;
         }
         
@@ -533,7 +534,7 @@
         <div class="page">
             <div class="header">
                 <div class="profile-pic-container">
-                    <img src="https://raw.githubusercontent.com/kwansubshim-cloud/resume/refs/heads/main/IMG_5711.jpeg" alt="심관섭 프로필 사진" class="profile-pic">
+                    <img src="https://raw.githubusercontent.com/kwansubshim-cloud/resume/refs/heads/main/IMG_5701.jpeg" alt="심관섭 프로필 사진" class="profile-pic">
                 </div>
                 <div class="header-info">
                     <h1>심관섭</h1>
