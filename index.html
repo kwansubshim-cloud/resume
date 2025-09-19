@@ -65,8 +65,8 @@
             width: 120px;
             height: 120px;
             border-radius: 20px;
-            object-fit: cover;
-            object-position: center top;
+            object-fit: cover; /* 이미지 비율을 유지하면서 꽉 채웁니다 (잘릴 수 있음) */
+            object-position: center top; /* 이미지의 상단 중앙을 기준으로 표시합니다 */
             flex-shrink: 0;
         }
         
@@ -91,7 +91,6 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
-            align-items: center;
         }
         
         .contact-item {
@@ -112,6 +111,23 @@
         
         .section {
             margin-bottom: 50px;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .section-title {
@@ -154,10 +170,18 @@
         
         .competency-card {
             padding: 24px;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
             border-radius: 16px;
             border: 1px solid #e2e8f0;
             transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .competency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+            background: white;
         }
         
         .competency-title {
@@ -203,12 +227,14 @@
             font-weight: bold;
         }
         
+        /* Project Section */
         .project-card {
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 16px;
             padding: 30px;
             margin-bottom: 24px;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -222,12 +248,14 @@
             height: 100%;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-
+        
+        .project-card:hover {
+            box-shadow: 0 10px 40px -10px rgba(102, 126, 234, 0.3);
+            transform: translateX(5px);
+        }
+        
         .project-header {
             margin-bottom: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
         }
         
         .project-title {
@@ -235,7 +263,6 @@
             font-weight: 700;
             color: #2d3748;
             margin-bottom: 8px;
-            width: 100%;
         }
         
         .project-company {
@@ -246,13 +273,6 @@
             font-size: 13px;
             color: #667eea;
             font-weight: 500;
-        }
-
-        .project-period {
-            color: #a0aec0;
-            font-size: 13px;
-            font-weight: 500;
-            margin-left: 12px;
         }
         
         .project-content {
@@ -272,9 +292,8 @@
         .achievement-badge {
             display: inline-block;
             padding: 6px 12px;
-            background: #e6f4ea;
-            color: #38a169;
-            border: 1px solid #c6f6d5;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
             border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
@@ -282,6 +301,7 @@
             margin-top: 8px;
         }
         
+        /* Experience Timeline */
         .timeline {
             position: relative;
             padding-left: 40px;
@@ -294,12 +314,24 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: #e2e8f0;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
         }
         
         .timeline-item {
             position: relative;
             margin-bottom: 30px;
+            animation: slideInLeft 0.6s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         .timeline-item::before {
@@ -332,6 +364,7 @@
             font-size: 13px;
         }
         
+        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -342,6 +375,13 @@
             padding: 20px;
             background: #f8f9fa;
             border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            background: white;
+            box-shadow: 0 5px 20px -5px rgba(102, 126, 234, 0.2);
+            transform: translateY(-3px);
         }
         
         .skill-category-title {
@@ -366,16 +406,30 @@
             border-radius: 20px;
             font-size: 12px;
             color: #4a5568;
+            transition: all 0.3s ease;
         }
         
+        .skill-tag:hover {
+            border-color: #667eea;
+            color: #667eea;
+            transform: scale(1.05);
+        }
+        
+        /* Education */
         .education-item {
             padding: 20px;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
             border-radius: 12px;
             margin-bottom: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .education-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px -5px rgba(102, 126, 234, 0.2);
         }
         
         .education-info {
@@ -402,108 +456,76 @@
         
         .education-gpa {
             padding: 8px 16px;
-            background: #e2e8f0;
-            color: #4a5568;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             border-radius: 20px;
             font-weight: 500;
             font-size: 14px;
         }
         
+        /* Responsive */
         @media (max-width: 768px) {
             .page {
                 padding: 40px 30px;
             }
+            
             .header {
                 flex-direction: column;
                 text-align: center;
             }
+            
             .header-info h1 {
                 font-size: 32px;
             }
+            
             .header-info .title {
                 font-size: 20px;
             }
+            
             .contact {
                 justify-content: center;
             }
+            
             .competency-grid {
                 grid-template-columns: 1fr;
             }
         }
         
-        /* ----------- PDF PRINT STYLES ----------- */
+        /* Print Styles */
         @media print {
             body {
                 background: white;
                 padding: 0;
-                font-size: 10pt;
             }
-
-            .print-btn, .floating-skills {
-                display: none !important;
-            }
-
+            
             .resume-container {
-                box-shadow: none !important;
+                box-shadow: none;
                 border-radius: 0;
-                border: none;
             }
             
-            * {
-                box-shadow: none !important;
-                text-shadow: none !important;
-                transition: none !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            
-            h1, h2, h3, h4, a, span, li, p, div {
-                color: #000 !important;
-            }
-
-            h1 {
-                background: none !important;
-                -webkit-text-fill-color: initial !important;
-            }
-
             .page {
-                padding: 1.5cm;
+                padding: 40px;
             }
-            
-            .section-title {
-                break-after: avoid-page;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
             }
-            
-            .project-card, .competency-card, .timeline-item, .education-item {
-                break-inside: avoid;
-                page-break-inside: avoid;
+            50% {
+                opacity: 0.7;
             }
-
-            .work-experience-section {
-                break-before: page;
-                page-break-before: always;
-            }
-
-            .achievement-badge {
-                background: #f0f0f0 !important;
-                border: 1px solid #ddd !important;
-            }
-
-            .competency-icon, .education-gpa {
-                background: #f0f0f0 !important;
-            }
-
-            .timeline::before {
-                background: #ccc !important;
-            }
-
-            .timeline-item::before {
-                border-color: #666 !important;
-            }
-
-            a {
-                text-decoration: none;
-            }
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #ffd700 0%, #ffed4e 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -514,7 +536,7 @@
                 <div class="profile-pic-container">
                     <img src="https://raw.githubusercontent.com/kwansubshim-cloud/resume/refs/heads/main/IMG_5711.jpeg" alt="심관섭 프로필 사진" class="profile-pic">
                 </div>
-                <div class="header-info">
+                  <div class="header-info">
                     <h1>심관섭</h1>
                     <div class="title">신사업 전략 · 블록체인 · 핀테크 전문가</div>
                     <div class="contact">
@@ -532,9 +554,12 @@
             <div class="section">
                 <h2 class="section-title">Profile</h2>
                 <div class="intro-text">
-                    저는 '전략'을 아이디어로만 남기지 않고, '실행'을 통해 '성과'로 증명하는 신사업 전략 전문가입니다. 안정성을 중시하는 한화 금융그룹에서 리스크 관리 역량을, 누구도 가보지 않은 길을 개척하는 코인원과 빗썸에서 데이터 기반의 프로덕트 개발 역량을 체득했습니다.
+                    저는 '전략'을 아이디어로만 남겨두지 않고, '실행'을 통해 '성과'를 증명하는 사람입니다.
+                    전통금융 기업인 한화 금융그룹에서는 시스템 안에서 새로운 사업의 씨앗을 심고 리스크를 관리하는 법을 배웠습니다.
+                    빗썸과 코인원에서는 누구도 가보지 않은 길을 개척하며 다양한 프로젝트를 추진하고 성과를 만드는 법을 체득했습니다.
                     <br><br>
-                    급변하는 규제와 글로벌 Web3 트렌드 속에서, 저는 전통 금융의 안정성과 디지털 자산 시장의 기회를 아우르는 균형 잡힌 시각으로 새로운 시장을 선도할 준비가 되어 있습니다.
+                    급변하는 규제와 글로벌 Web3 트렌드 속에서, 저는 전통 금융의 안정성과 Web3 기반의 전문성을 바탕으로 
+                    새로운 블록체인 산업의 시장을 선도할 준비가 되어 있습니다.
                 </div>
             </div>
             
@@ -549,13 +574,13 @@
                         <ul class="competency-list">
                             <li>시장/기술 리서치를 통한 유망 사업 영역 발굴</li>
                             <li>제로베이스(0→1) 신규 사업 조직 구축</li>
-                            <li>핵심 프로덕트 론칭을 통한 스케일업(1→10)</li>
+                            <li>핵심 프로덕트 론칭을 통한 스케일업</li>
                         </ul>
                     </div>
                     <div class="competency-card">
                         <div class="competency-title">
                             <div class="competency-icon">💰</div>
-                            투자 및 M&A
+                            전략적 투자 및 CVC
                         </div>
                         <ul class="competency-list">
                             <li>블록체인/핀테크 유망 기업 발굴</li>
@@ -566,7 +591,7 @@
                     <div class="competency-card">
                         <div class="competency-title">
                             <div class="competency-icon">📱</div>
-                            프로덕트 관리 (PM)
+                            프로젝트 관리 (PM)
                         </div>
                         <ul class="competency-list">
                             <li>대규모 프로젝트 End-to-End 관리</li>
@@ -577,72 +602,113 @@
                     <div class="competency-card">
                         <div class="competency-title">
                             <div class="competency-icon">⚖️</div>
-                            규제 환경 대응
+                            규제 환경 대응 및 커뮤니케이션
                         </div>
                         <ul class="competency-list">
                             <li>복잡한 규제 리스크 분석 및 해결</li>
                             <li>금융당국과의 정책 협의</li>
-                            <li>우호적인 사업 환경 조성</li>
+                            <li>수명 업무 및 C-Level 커뮤니케이션</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
             <div class="section">
-                 <a href="projects.html" style="text-decoration: none; color: inherit;">
-                    <h2 class="section-title" id="key-projects">Key Project Experience →</h2>
-                 </a>
+                <h2 class="section-title" id="key-projects">Key Project Experience</h2>
                 
                 <div class="project-card">
                     <div class="project-header">
-                        <h3 class="project-title">🎯 매출 10% 기여, 코인원 VIP 서비스 신규 론칭</h3>
+                        <h3 class="project-title">코인원 법인사업 구축 및 규제 환경 대응</h3>
                         <span class="project-company">코인원</span>
-                        <span class="project-period">(2023.08 ~ 2024.02)</span>
+                        <span class="project-period">(수행 기간: 2024.04 ~ 2025.09)</span>
                     </div>
                     <div class="project-content">
-                        <strong>도전 과제:</strong> 제로베이스에서 법인사업 조직 신설, 규제 지연이라는 외부 위기를 기회로 전환
-                        <strong>해결 과정:</strong> 금융당국 가이드라인 지연에 대한 대안 전략으로 VIP 서비스 론칭을 제안하고, 데이터 시뮬레이션으로 매출 기여도를 증명하여 경영진의 빠른 투자를 유도
+                        <strong>도전 과제:</strong>
+                        제로베이스에서 법인사업 조직 신설, 규제 지연이라는 외부 위기를 기회로 전환
+                        
+                        <strong>해결 과정:</strong>
+                        • 금융당국 가이드라인 지연 → 대안 전략으로 VIP 서비스 론칭 제안<br>
+                        • 데이터 시뮬레이션으로 매출 10% 기여 가능성 증명<br>
+                        • 경영진의 빠른 의사결정과 투자 유도
+                        
                         <strong>성과:</strong>
-                        <span class="achievement-badge">✓ <strong>200명+</strong> VIP 고객 유치</span>
-                        <span class="achievement-badge">✓ <strong>매출 10% 기여</strong></span>
-                        <span class="achievement-badge">✓ <strong>6개월 내</strong> 수익화</span>
+                        <span class="achievement-badge">✓ 200명+ VIP 고객 유치</span>
+                        <span class="achievement-badge">✓ 매출 10% 기여</span>
+                        <span class="achievement-badge">✓ 6개월 내 수익화</span>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-header">
-                        <h3 class="project-title">⚡ 장애율 90% 감소, 빗썸 입출금 시스템 전면 재구축</h3>
+                        <h3 class="project-title">빗썸 레거시 입출금 시스템 전면 재구축</h3>
                         <span class="project-company">빗썸코리아</span>
-                        <span class="project-period">(2022.09 ~ 2023.10)</span>
+                        <span class="project-period">(수행 기간: 2022.09 ~ 2023.10)</span>
+
                     </div>
                     <div class="project-content">
-                        <strong>도전 과제:</strong> PHP 기반 레거시 시스템의 잦은 장애와 보안 취약점 해결을 위한 신규 시스템 구축
-                        <strong>해결 과정:</strong> 안정성, 확장성, 보안을 3대 목표로 신규 아키텍처 설계를 주도하고 Scrum 방식으로 프로젝트를 운영하며 리스크 관리
+                        <strong>도전 과제:</strong>
+                        PHP 기반 레거시 시스템의 일 단위 장애, 보안 취약점 해결을 위한 신규 시스템 구축
+                        
+                        <strong>해결 과정:</strong>
+                        • 안정성, 확장성, 보안 3대 핵심 목표 설정<br>
+                        • 신규 아키텍처 설계 주도 및 개발팀 협업<br>
+                        • Scrum 방식으로 프로젝트 운영 및 리스크 관리
+                        
                         <strong>성과:</strong>
-                        <span class="achievement-badge">✓ KPI <strong>200% 초과</strong> 달성</span>
-                        <span class="achievement-badge">✓ 장애율 <strong>90% 감소</strong></span>
+                        <span class="achievement-badge">✓ KPI 200% 초과 달성</span>
+                        <span class="achievement-badge">✓ 장애율 90% 감소</span>
                         <span class="achievement-badge">✓ 신규 자산 상장 효율화</span>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <div class="project-header">
-                        <h3 class="project-title">💎 한화 금융그룹 블록체인 전략적 투자</h3>
+                        <h3 class="project-title">한화 금융그룹 블록체인 전략적 투자 및 신사업 추진</h3>
                         <span class="project-company">한화생명</span>
-                        <span class="project-period">(2021.03 ~ 2022.01)</span>
+                         <span class="project-period">(수행 기간: 2020.05 ~ 2022.04)</span>
                     </div>
                     <div class="project-content">
-                        <strong>도전 과제:</strong> 그룹 미래 성장 동력 확보를 위한 유망 블록체인 기술 기업 발굴 및 투자
-                        <strong>해결 과정:</strong> STO, RWA 등 핵심 영역을 특정하여 Top-tier 스타트업을 발굴하고 PoC를 통한 기술 검증 후, 밸류에이션 및 경영진 의사결정 지원
+                        <strong>도전 과제:</strong>
+                        그룹의 미래 성장 동력 확보를 위한 블록체인 기술 기업 발굴 및 투자
+                        
+                        <strong>해결 과정:</strong>
+                        • STO, RWA, Web3 결제 등 핵심 영역 특정<br>
+                        • Top-tier 스타트업 발굴 및 기술 검증(PoC)<br>
+                        • 밸류에이션 및 경영진 의사결정 지원
+                        
                         <strong>성과:</strong>
-                        <span class="achievement-badge">✓ <strong>4건</strong> 전략적 투자 완료</span>
+                        <span class="achievement-badge">✓ 4건 전략적 투자 완료</span>
                         <span class="achievement-badge">✓ Web3 지갑 MVP 론칭</span>
                         <span class="achievement-badge">✓ 그룹 블록체인 전략 수립</span>
                     </div>
                 </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">카카오뱅크 자산조회 서비스 제휴</h3>
+                        <span class="project-company">코인원</span>
+                        <span class="project-period">(수행 기간: 2025.01 ~ 2025.04)</span>
+
+                    </div>
+                    <div class="project-content">
+                        <strong>도전 과제:</strong>
+                        국내 1위 인터넷 은행과의 제휴를 통한 신규 고객 확보
+                        
+                        <strong>해결 과정:</strong>
+                        • 양사 정책 및 기술 스펙 차이 조율<br>
+                        • 전체 서비스 기획 및 개발/디자인/QA 협업<br>
+                        • 데이터 기반 우선순위 설정으로 이해관계 해결<br>
+                        • End-to-End 프로젝트 총괄 관리
+                        
+                        <strong>성과:</strong>
+                        <span class="achievement-badge">✓ 180만 PV 달성 (3개월)</span>
+                        <span class="achievement-badge">✓ 신규 고객 1,500명+</span>
+                        <span class="achievement-badge">✓ 2단계 성공 론칭</span>
+                    </div>
+                </div>
             </div>
             
-            <div class="section work-experience-section">
+            <div class="section">
                 <h2 class="section-title">Work Experience</h2>
                 <div class="timeline">
                     <div class="timeline-item">
@@ -701,6 +767,8 @@
                         <div class="skill-tags">
                             <span class="skill-tag">MS-SQL</span>
                             <span class="skill-tag">R</span>
+                            <span class="skill-tag">SPSS</span>
+                            <span class="skill-tag">STATA</span>
                             <span class="skill-tag">Python</span>
                         </div>
                     </div>
@@ -710,6 +778,7 @@
                             <span class="skill-tag">LLM 활용</span>
                             <span class="skill-tag">Generative AI</span>
                             <span class="skill-tag">자동화</span>
+                            <span class="skill-tag">리서치</span>
                         </div>
                     </div>
                 </div>
@@ -740,6 +809,16 @@
                 <div class="competency-grid">
                     <div class="competency-card">
                         <div class="competency-title">
+                            <div class="competency-icon">📚</div>
+                            대외활동 및 강의
+                        </div>
+                        <ul class="competency-list">
+                            <li>한국자산평가 블록체인/가상자산 특강 (2025)</li>
+                            <li>부경대학교 핀테크 특강 (2025)</li>
+                        </ul>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-title">
                             <div class="competency-icon">🏆</div>
                             자격증 및 특허
                         </div>
@@ -762,31 +841,132 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            
+        
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // This script adds web-only interactive elements.
-            // They are automatically hidden for PDF printing by the @media print styles.
+            // Add progress bars for skills
+            const addProgressBars = () => {
+                const skills = {
+                    '신사업 전략': 95,
+                    '블록체인': 92,
+                    '프로젝트 관리': 92,
+                    '데이터 분석': 85,
+                    '규제 대응': 85
+                };
+                
+                // Create floating skill indicators
+                const createFloatingSkills = () => {
+                    const container = document.querySelector('.resume-container');
+                    if (!container) return;
+                    
+                    const floatingDiv = document.createElement('div');
+                    floatingDiv.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: white;
+                        padding: 20px;
+                        border-radius: 16px;
+                        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.2);
+                        z-index: 1000;
+                        max-width: 200px;
+                        opacity: 0;
+                        transform: translateX(100%);
+                        transition: all 0.5s ease;
+                    `;
+                    
+                    floatingDiv.innerHTML = `<h4 style="margin-bottom: 12px; color: #2d3748; font-size: 14px; font-weight: 600;">핵심 역량 지수</h4>`;
+                    
+                    Object.entries(skills).forEach(([skill, value]) => {
+                        const skillBar = document.createElement('div');
+                        skillBar.style.cssText = 'margin-bottom: 12px;';
+                        skillBar.innerHTML = `
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                <span style="font-size: 12px; color: #4a5568;">${skill}</span>
+                                <span style="font-size: 12px; color: #667eea; font-weight: 600;">${value}%</span>
+                            </div>
+                            <div style="width: 100%; height: 6px; background: #f0f0f0; border-radius: 3px; overflow: hidden;">
+                                <div style="width: ${value}%; height: 100%; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); transition: width 1s ease;"></div>
+                            </div>
+                        `;
+                        floatingDiv.appendChild(skillBar);
+                    });
+                    
+                    document.body.appendChild(floatingDiv);
+                    
+                    // Show on scroll
+                    setTimeout(() => {
+                        window.addEventListener('scroll', () => {
+                            if (window.scrollY > 200) {
+                                floatingDiv.style.opacity = '1';
+                                floatingDiv.style.transform = 'translateX(0)';
+                            } else {
+                                floatingDiv.style.opacity = '0';
+                                floatingDiv.style.transform = 'translateX(100%)';
+                            }
+                        });
+                    }, 100);
+                };
+                
+                // Only add floating skills on desktop
+                if (window.innerWidth > 1024) {
+                    createFloatingSkills();
+                }
+            };
+            
+            addProgressBars();
+            
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.competency-card, .project-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Print functionality
             const addPrintButton = () => {
                 const printBtn = document.createElement('button');
-                printBtn.classList.add('print-btn'); // Class for hiding in print
                 printBtn.innerHTML = '🖨️ PDF 출력';
                 printBtn.style.cssText = `
-                    position: fixed; bottom: 20px; right: 20px; padding: 12px 24px;
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    padding: 12px 24px;
                     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    color: white; border: none; border-radius: 50px; font-weight: 600;
-                    cursor: pointer; box-shadow: 0 10px 30px -10px rgba(102, 126, 234, 0.5);
-                    transition: all 0.3s ease; z-index: 1000;
+                    color: white;
+                    border: none;
+                    border-radius: 50px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    box-shadow: 0 10px 30px -10px rgba(102, 126, 234, 0.5);
+                    transition: all 0.3s ease;
+                    z-index: 1000;
                 `;
-                printBtn.addEventListener('click', () => window.print());
+                
+                printBtn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.boxShadow = '0 15px 40px -10px rgba(102, 126, 234, 0.6)';
+                });
+                
+                printBtn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 10px 30px -10px rgba(102, 126, 234, 0.5)';
+                });
+                
+                printBtn.addEventListener('click', () => {
+                    window.print();
+                });
+                
                 document.body.appendChild(printBtn);
             };
             
-            if (window.matchMedia && !window.matchMedia('print').matches) {
-                addPrintButton();
-            }
+            addPrintButton();
         });
     </script>
 </body>
